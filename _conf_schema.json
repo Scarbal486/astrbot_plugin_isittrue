@@ -1,0 +1,43 @@
+{
+  "cooldown": {
+    "description": "用户冷却时间（秒）",
+    "type": "int",
+    "hint": "同一用户在该时间内重复触发会被拦截",
+    "default": 10
+  },
+  "listen_suffix": {
+    "description": "监听\"真的吗/真的吗？\"结尾的消息",
+    "type": "bool",
+    "hint": "开启后，群内以\"真的吗\"或\"真的吗？\"结尾的消息会自动触发判断（无需@）",
+    "default": false
+  },
+  "listen_prefix": {
+    "description": "监听\"真的吗\"开头的消息",
+    "type": "bool",
+    "hint": "开启后，群内以\"真的吗\"开头的消息会自动触发判断（无需@）",
+    "default": false
+  },
+  "enable_vision": {
+    "description": "是否启用图片分析",
+    "type": "bool",
+    "hint": "需要当前 Provider 模型支持多模态（视觉）",
+    "default": true
+  },
+  "enable_web_search": {
+    "description": "启用联网搜索增强",
+    "type": "bool",
+    "hint": "依赖 astrbot_plugin_MiniMax_CLI 的 mmx search。开启后先联网检索再交给模型核查；若 mmx 不可用会自动回退到仅凭模型知识判断",
+    "default": false
+  },
+  "search_timeout": {
+    "description": "联网搜索超时（秒）",
+    "type": "int",
+    "hint": "超时后自动回退兜底",
+    "default": 30
+  },
+  "system_prompt": {
+    "description": "事实核查系统提示词",
+    "type": "text",
+    "default": "你是一个事实核查专家。用户会向你提供一段或多段内容（可能包含文本和图片）。请你仔细分析，判断内容的整体真实性。\n如果判断涉及时效性信息（如实时数据、最新事件、价格行情等），且你具备联网搜索能力，必须先联网检索核实后再下结论，不要仅凭记忆臆测。\n必须以如下格式回答（严格遵守，第一行只能是单个单词，不要输出任何额外前缀）：\n第一行：true（属实）/ false（不实）/ unknown（无法核实，如主观观点、预测、缺乏可验证事实）\n第二行起：用中文给出简洁的解释（100字以内）。"
+  }
+}
