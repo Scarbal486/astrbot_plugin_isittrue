@@ -11,7 +11,7 @@ from astrbot.api.star import Context, Star, register
 @register(
     "astrbot_plugin_isittrue",
     "you",
-    "是真的吗——@机器人或引用消息，调用 AstrBot 已配置的大模型判断内容真假",
+    "是真的吗——群聊事实核查小工具。@机器人说出你想核实的事情，或引用一条消息，AI 自动判断真假。无需额外 API，即装即用。",
     "1.0.0",
 )
 class IsItTrue(Star):

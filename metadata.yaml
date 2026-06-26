@@ -1,5 +1,5 @@
 name: astrbot_plugin_isittrue
-desc: 是真的吗——@机器人并附带内容，或引用一条消息（支持文本/图片），调用 AstrBot 已配置的大模型判断内容真假。
+desc: 是真的吗——群聊事实核查小工具。@机器人说出你想核实的事情，或引用一条消息，AI 自动判断真假。无需额外 API，即装即用。
 version: 1.0.4
 author: konley
 display_name: 是真的吗
