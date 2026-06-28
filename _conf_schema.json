@@ -35,6 +35,12 @@
     "hint": "超时后自动回退兜底",
     "default": 30
   },
+  "group_blacklist": {
+    "description": "黑名单群 ID 列表",
+    "type": "list",
+    "default": [],
+    "hint": "在此列表中的群聊，插件将不触发事实核查。填入纯数字群号即可。"
+  },
   "system_prompt": {
     "description": "事实核查系统提示词",
     "type": "text",

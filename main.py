@@ -25,6 +25,9 @@ class IsItTrue(Star):
         # 联网搜索增强：开启后先用 mmx search 检索，把结果拼进 prompt 再交给模型
         self.enable_web_search: bool = bool(config.get("enable_web_search", False))
         self.search_timeout: int = int(config.get("search_timeout", 30))
+        self.group_blacklist: set[str] = set(
+            str(g) for g in config.get("group_blacklist", [])
+        )
         self.system_prompt: str = config.get(
             "system_prompt",
             "你是一个事实核查专家。用户会向你提供一段或多段内容（可能包含文本和图片）。"
@@ -45,6 +48,10 @@ class IsItTrue(Star):
         2) listen_suffix 开启：消息以"真的吗"或"真的吗？"结尾
         3) listen_prefix 开启：消息以"真的吗"开头
         """
+        group_id = str(event.get_group_id()) if event.get_group_id() else None
+        if group_id and group_id in self.group_blacklist:
+            return
+
         triggered, strip_keyword = self._match_trigger(event)
         if not triggered:
             return
